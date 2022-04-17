@@ -2139,7 +2139,8 @@ code to the Playground. You can disable the confirmation by setting
                              (let ((url (format "https://play.golang.org/p/%s"
                                                 (buffer-substring (point) (point-max)))))
                                (when go-play-browse-function
-                                 (funcall go-play-browse-function url))))))))))))
+                                 (funcall go-play-browse-function url)))))))))
+      content-buf)))
 
 ;;;###autoload
 (defun go-download-play (url)
