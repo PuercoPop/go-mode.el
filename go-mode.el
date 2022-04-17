@@ -1244,7 +1244,7 @@ INDENT is the normal indent of this line, i.e. that of the case body."
     (end-of-line))
   (setq count (or count 1))
   (let (first failure)
-    (dotimes (i (abs count))
+    (dotimes (_ (abs count))
       (setq first t)
       (while (and (not failure)
                   (or first (go-in-string-or-comment-p)))
@@ -2469,7 +2469,7 @@ divisor for FILE-NAME."
                (rest (split-string (nth 1 parts) "[., ]")))
 
           (cl-destructuring-bind
-              (start-line start-column end-line end-column num count)
+              (start-line start-column end-line end-column _num count)
               (mapcar #'string-to-number rest)
 
             (when (string= (file-name-nondirectory file) file-name)
