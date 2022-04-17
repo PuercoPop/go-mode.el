@@ -2015,15 +2015,13 @@ arguments can be set as a list via ‘gofmt-args’."
       (kill-buffer errbuf))))
 
 ;;;###autoload
-(defun gofmt-before-save ()
-  "Add this to .emacs to run gofmt on the current buffer when saving:
-\(add-hook 'before-save-hook 'gofmt-before-save).
-
-Note that this will cause ‘go-mode’ to get loaded the first time
-you save any file, kind of defeating the point of autoloading."
-
-  (interactive)
-  (when (eq major-mode 'go-mode) (gofmt)))
+(define-minor-mode gofmt-mode
+  "Runs gofmt before saving the file."
+  :lighther "gofmt"
+  :global nil
+  (if gofmt-mode
+      (add-hook 'before-save-hook 'gofmt nil 'local)
+    (remove-hook 'before-save-hook 'gofmt 'local)))
 
 (defun godoc--read-query ()
   "Read a godoc query from the minibuffer."
