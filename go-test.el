@@ -40,9 +40,10 @@
   ;; compilation-filter-hook, compilation-finish-functions?
   )
 
-(defun go-test-run-file ()
-  (interactive) ; TODO(javier): Use ffap as a seed
-  (compile (concat "go test " path)))
+;;;###autoload
+(defun go-test-run-dir ()
+  (interactive)
+  (compile "go test"))
 
 (provide 'go-test)
 ;;; go-test.el ends here
