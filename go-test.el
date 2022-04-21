@@ -16,6 +16,7 @@
 ;;; Code
 
 (require 'compile)
+(require 'project)
 
 (defgroup go-test nil
   "go test Emacs integration"
@@ -44,6 +45,12 @@
 (defun go-test-run-dir ()
   (interactive)
   (compile "go test"))
+
+(defun go-test-run-project ()
+  "Run the entire test suite for the project."
+  (interactive)
+  (let ((default-directory (project-root (project-current t))))
+    (compile "go test ./...")))
 
 (provide 'go-test)
 ;;; go-test.el ends here
