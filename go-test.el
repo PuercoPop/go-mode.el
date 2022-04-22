@@ -42,10 +42,25 @@
   )
 
 ;;;###autoload
-(defun go-test-run-dir ()
+(defun go-test-run-test ()
+  "Run the test at point."
   (interactive)
   (compile "go test"))
 
+;;;###autoload
+(defun go-test-run-package ()
+  "Run"
+  (interactive)
+  (compile "go test"))
+
+;;;###autoload
+(defun go-test-run-dir ()
+  "Run the tests in the local directory."
+  (interactive)
+  (let ((default-directory (file-name-directory (buffer-file-name (current-buffer)))))
+    (compile "go test")))
+
+;;;###autoload
 (defun go-test-run-project ()
   "Run the entire test suite for the project."
   (interactive)
